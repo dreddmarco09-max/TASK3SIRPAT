@@ -1,7 +1,6 @@
 import java.util.Scanner;
 import java.util.List;
 
-
 public class Main {
     public static void main(String[] args) {
         Repository repo = new Repository();
@@ -12,14 +11,15 @@ public class Main {
             System.out.println("\n--- STUDENTS RECORD LIST ---");
             System.out.println("1. View Records");
             System.out.println("2. Add Student");
-            System.out.println("3. Exit The Program");
+            System.out.println("3. Delete Student"); 
+            System.out.println("4. Exit The Program");
             System.out.print("Select: ");
             
             int choice = Sc.nextInt();
             Sc.nextLine(); 
 
             if (choice == 1) {
-                System.out.println("\n--- DATABASE RECORDS ---"); //
+                System.out.println("\n--- DATABASE RECORDS ---");
                 List<Student> list = repo.getAllStudents();
                 for (Student s : list) {
                     System.out.println(s.displayInfo()); 
@@ -41,9 +41,17 @@ public class Main {
                     .setYearLevel(yr).setAddress(add).setContactNumber(con)
                     .build();
                 repo.addStudent(s);
-            } else {
+            } else if (choice == 3) {
+                
+                System.out.print("Enter Student ID to delete: ");
+                int idToDelete = Sc.nextInt();
+                repo.deleteStudent(idToDelete);
+            } else if (choice == 4) {
                 running = false;
+            } else {
+                System.out.println("Invalid selection. Try again.");
             }
         }
+        Sc.close();
     }
 }
