@@ -16,7 +16,7 @@ public class Student {
         this.contactNumber = builder.contactNumber;
     }
 
-    // Fixed padding logic to keep everything on ONE line
+   
     private String padRight(String text, int length) {
         String result = (text == null) ? "" : text;
         while (result.length() < length) {
@@ -26,7 +26,7 @@ public class Student {
     }
 
     public String displayInfo() {
-        // We combine and pad all data into a single clean string
+        
         return padRight("ID: " + studentID, 7) + " | " +
                padRight(firstName + " " + lastName, 25) + " | " +
                padRight(gender, 7) + " | " +
@@ -37,7 +37,7 @@ public class Student {
                "Contact: " + contactNumber;
     }
 
-    // Getters for Repository
+    
     public int getStudentID() { return studentID; }
     public String getFirstName() { return firstName; }
     public String getLastName() { return lastName; }
