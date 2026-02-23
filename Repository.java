@@ -3,7 +3,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Repository {
-    
     private final String URL = "jdbc:sqlserver://LAPTOP-I6GCH1M5;databaseName=StudentSystem;integratedSecurity=true;encrypt=true;trustServerCertificate=true;";
 
     public void addStudent(Student s) {
@@ -23,25 +22,6 @@ public class Repository {
             System.out.println("Registration successful!");
         } catch (SQLException e) {
             System.out.println("Save Error: " + e.getMessage());
-        }
-    }
-
-   
-    public void deleteStudent(int studentID) {
-        String sql = "DELETE FROM students WHERE studentID = ?";
-        try (Connection conn = DriverManager.getConnection(URL); 
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            
-            pstmt.setInt(1, studentID);
-            int affectedRows = pstmt.executeUpdate();
-            
-            if (affectedRows > 0) {
-                System.out.println("Student ID " + studentID + " deleted successfully!");
-            } else {
-                System.out.println("No student found with ID: " + studentID);
-            }
-        } catch (SQLException e) {
-            System.out.println("Delete Error: " + e.getMessage());
         }
     }
 
